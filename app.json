@@ -11,7 +11,14 @@
   "url": "",
   "logo": "",
   "capabilities": [],
-  "dependencies": [],
+  "dependencies": [
+    {
+      "appId": "2a89f298-7ffd-44a5-a7ce-e08dac98abce",
+      "name": "Essential Business Headlines",
+      "publisher": "Microsoft",
+      "version": "1.0.21229.0"
+    }
+  ],
   "screenshots": [],
   "platform": "12.0.0.0",
   "application": "12.0.0.0",
