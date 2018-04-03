@@ -22,12 +22,22 @@ pageextension 50100 "AIR Add simple headl. to BM RC" extends "Headline RC Busine
     [InDataSet]
     GreetingOfTheAudienceVisible : Boolean;
     GreetingOfTheAudienceText : Text;
+    GreetingOfTheAudiencePayloadText : Text;
 
     trigger OnAfterGetRecord()
     begin
+        HandleGreetingAudinenceHeadline();
+        AIROnSetVisibility(GreetingOfTheAudienceVisible);
+    end;
+
+    local procedure HandleGreetingAudinenceHeadline()
+    var
+        HeadlineManagement: Codeunit "Headline Management";
+    begin
         GreetingOfTheAudienceVisible := true;
-        GreetingOfTheAudienceText := 'Welcome you on webinar!';
-        AIROnSetVisibility (GreetingOfTheAudienceVisible);
+        GreetingOfTheAudiencePayloadText := 'Welcome you on the webinar!';
+        HeadlineManagement.GetHeadlineText('Business Central from the trenches',GreetingOfTheAudiencePayloadText,GreetingOfTheAudienceText);
+        //Message(GreetingOfTheAudienceText);
     end;
 
     [IntegrationEvent(false,false)]
