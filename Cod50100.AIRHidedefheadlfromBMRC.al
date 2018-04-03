@@ -1,9 +1,9 @@
 codeunit 50100 "AIR Hide def. headl. from BMRC"
 {
     //Hide standard headlines from Business Manager Role Center
+
     trigger OnRun()
     begin
-        
     end;
     
     [EventSubscriber(ObjectType::Page, Page::"Headline RC Business Manager", 'OnIsAnyExtensionHeadlineVisible', '', true, true)]
