@@ -35,7 +35,7 @@ pageextension 50100 "AIR Add simple headl. to BM RC" extends "Headline RC Busine
         HeadlineManagement: Codeunit "Headline Management";
     begin
         GreetingOfTheAudienceVisible := true;
-        GreetingOfTheAudiencePayloadText := 'Welcome you on the webinar!';
+        GreetingOfTheAudiencePayloadText := 'Welcome to the webinar!';
         HeadlineManagement.GetHeadlineText('Business Central from the trenches',GreetingOfTheAudiencePayloadText,GreetingOfTheAudienceText);
         //Message(GreetingOfTheAudienceText);
     end;
