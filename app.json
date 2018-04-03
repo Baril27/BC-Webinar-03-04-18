@@ -1,0 +1,22 @@
+{
+  "id": "9fd368dd-8a95-4941-b33a-cf15321d8988",
+  "name": "Webinar-03-04-18",
+  "publisher": "AirApps",
+  "brief": "",
+  "description": "",
+  "version": "1.0.0.0",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "capabilities": [],
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "12.0.0.0",
+  "application": "12.0.0.0",
+  "idRange": {
+    "from": 50100,
+    "to": 50149
+  }
+}
