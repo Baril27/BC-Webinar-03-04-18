@@ -16,14 +16,8 @@ pageextension 50100 "AIR Add simple headl. to BM RC" extends "Headline RC Busine
                     ApplicationArea = Basic, Suite;
                     trigger OnDrillDown();
                     var
-                        Employee: Record Employee;
-                        GreetingHeadlineURL: Text;
                     begin
-                        GreetingHeadlineURL := 'https://community.dynamics.com/badges/61?pi51895=1';
-/*                         If Not Employee.IsEmpty() then
-                            Employee.FindFirst();
-                        GreetingHeadlineURL := GetUrl(CURRENTCLIENTTYPE, CompanyName(), ObjectType::Page, PAGE::"Employee List", Employee, false);
- */                        HYPERLINK(GreetingHeadlineURL);
+                        OnDrillDownMyWebinarAttendees();
                     end;
                 }
             }
@@ -52,6 +46,13 @@ pageextension 50100 "AIR Add simple headl. to BM RC" extends "Headline RC Busine
                                             ' attendees!';
         HeadlineManagement.GetHeadlineText('Business Central from the trenches', GreetingOfTheAudiencePayloadText, GreetingOfTheAudienceText);
         //Message(GreetingOfTheAudienceText);
+    end;
+
+    local procedure OnDrillDownMyWebinarAttendees();
+    var
+        EmployeeList: Page "Employee List";
+    begin
+        EmployeeList.Run();
     end;
 
     [IntegrationEvent(false, false)]
