@@ -17,13 +17,10 @@ pageextension 50100 "AIR Add simple headl. to BM RC" extends "Headline RC Busine
                     trigger OnDrillDown();
                     var
                         Employee: Record Employee;
-                        GreetingHeadlineURL: Text;
+                        YouTubeHeadlineURL: Text;
                     begin
-                        GreetingHeadlineURL := 'https://community.dynamics.com/badges/61?pi51895=1';
-/*                         If Not Employee.IsEmpty() then
-                            Employee.FindFirst();
-                        GreetingHeadlineURL := GetUrl(CURRENTCLIENTTYPE, CompanyName(), ObjectType::Page, PAGE::"Employee List", Employee, false);
- */                        HYPERLINK(GreetingHeadlineURL);
+                        YouTubeHeadlineURL := 'https://www.youtube.com/watch?v=uDFvG64TkEI&list=PLhZ3P-LY7CqnJY3p9AuwSBC6TOgYFPnY3';
+                        HYPERLINK(YouTubeHeadlineURL);
                     end;
                 }
             }
@@ -47,14 +44,23 @@ pageextension 50100 "AIR Add simple headl. to BM RC" extends "Headline RC Busine
         HeadlineManagement: Codeunit "Headline Management";
     begin
         GreetingOfTheAudienceVisible := true;
-        GreetingOfTheAudiencePayloadText := 'Welcome to the webinar! We have ' +
-                                            HeadlineManagement.Emphasize('446') +
-                                            ' attendees!';
-        HeadlineManagement.GetHeadlineText('Business Central from the trenches', GreetingOfTheAudiencePayloadText, GreetingOfTheAudienceText);
+        GreetingOfTheAudiencePayloadText := 'You have '+
+                                            HeadlineManagement.Emphasize(GetNumberOfYoutubeWatches) +
+                                            ' watches in Youtube!';
+        HeadlineManagement.GetHeadlineText('NAV Skills - Webinars',GreetingOfTheAudiencePayloadText,GreetingOfTheAudienceText);
         //Message(GreetingOfTheAudienceText);
     end;
 
-    [IntegrationEvent(false, false)]
+    local procedure GetNumberOfYoutubeWatches () :Text
+    var 
+            MyYouTubeVideos : Record "AIR My Youtube Video";
+    begin
+        MyYouTubeVideos.Refresh();
+        MyYouTubeVideos.CalcSums("Number of Watches");
+        EXIT(Format(MyYouTubeVideos."Number of Watches"));
+    end;
+
+    [IntegrationEvent(false,false)]
     local procedure AIROnSetVisibility(var GreetingOfTheAudienceVisible: Boolean)
     begin
     end;
