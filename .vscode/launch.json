@@ -7,9 +7,11 @@
             "name": "Your own server",
             "server": "https://air-d365bc-dev.westeurope.cloudapp.azure.com",
             "serverInstance": "nav",
+            "tenant": "default",
             "authentication": "UserPassword",
-            //"startupObjectId": 22,
-            //"startupObjectType": "Page"
+            //"startupObjectId": 50100,
+            //"startupObjectType": "Page",
+            "schemaUpdateMode": "Recreate"
         }
     ]
 }

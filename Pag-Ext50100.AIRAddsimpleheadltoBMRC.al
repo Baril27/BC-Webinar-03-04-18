@@ -41,18 +41,27 @@ pageextension 50100 "AIR Add simple headl. to BM RC" extends "Headline RC Busine
         HeadlineManagement: Codeunit "Headline Management";
     begin
         GreetingOfTheAudienceVisible := true;
-        GreetingOfTheAudiencePayloadText := 'Welcome to the webinar! We have ' +
-                                            HeadlineManagement.Emphasize('446') +
-                                            ' attendees!';
-        HeadlineManagement.GetHeadlineText('Business Central from the trenches', GreetingOfTheAudiencePayloadText, GreetingOfTheAudienceText);
+        GreetingOfTheAudiencePayloadText := 'You have ' +
+                                            HeadlineManagement.Emphasize(GetNumberOfYoutubeWatches) +
+                                            ' watches in Youtube!';
+        HeadlineManagement.GetHeadlineText('NAV Skills - Webinars', GreetingOfTheAudiencePayloadText, GreetingOfTheAudienceText);
         //Message(GreetingOfTheAudienceText);
+    end;
+
+    local procedure GetNumberOfYoutubeWatches(): Text
+    var
+        MyYouTubeVideos: Record "AIR My Youtube Video";
+    begin
+        MyYouTubeVideos.Refresh();
+        MyYouTubeVideos.CalcSums("Number of Watches");
+        EXIT(Format(MyYouTubeVideos."Number of Watches"));
     end;
 
     local procedure OnDrillDownMyWebinarAttendees();
     var
-        EmployeeList: Page "Employee List";
+        MyYouTubeVideos: Page "AIR My Youtube Videos";
     begin
-        EmployeeList.Run();
+        MyYouTubeVideos.Run();
     end;
 
     [IntegrationEvent(false, false)]
