@@ -27,6 +27,7 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 Invoke-Item C:\Users\vmadmin\Documents\AL
 
 #4. Open VSCode
+Start code 'C:\Users\vmadmin\Documents\AL\EssentialBusinessHeadlines.Source'
 
 #5. Show table with headlines results
 Start 'https://air-d365bc-dev.westeurope.cloudapp.azure.com/nav/?tenant=default&signInRedirected=1&table=1438'
