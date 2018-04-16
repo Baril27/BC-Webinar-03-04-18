@@ -1,6 +1,6 @@
 {
   "id": "9fd368dd-8a95-4941-b33a-cf15321d8988",
-  "name": "Webinar-03-04-18",
+  "name": "Webinar-17-04-18",
   "publisher": "AirApps",
   "brief": "",
   "description": "",
@@ -18,5 +18,6 @@
   "idRange": {
     "from": 50100,
     "to": 50149
-  }
+  },
+  "showMyCode": true
 }
