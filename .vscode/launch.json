@@ -6,7 +6,8 @@
             "request": "launch",
             "name": "Your own server",
             "server": "https://air-d365bc-dev.westeurope.cloudapp.azure.com",
-            "serverInstance": "nav",
+            "serverInstance": "NAV",
+            "tenant": "default",
             "authentication": "UserPassword",
             //"startupObjectId": 22,
             //"startupObjectType": "Page"
