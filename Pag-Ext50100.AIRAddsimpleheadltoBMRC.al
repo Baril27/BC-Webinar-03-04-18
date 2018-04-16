@@ -17,7 +17,7 @@ pageextension 50100 "AIR Add simple headl. to BM RC" extends "Headline RC Busine
                     trigger OnDrillDown();
                     var
                     begin
-                        OnDrillDownMyWebinarAttendees();
+                        OnDrillDownNavSkillsWatches();
                     end;
                 }
             }
@@ -57,7 +57,7 @@ pageextension 50100 "AIR Add simple headl. to BM RC" extends "Headline RC Busine
         EXIT(Format(MyYouTubeVideos."Number of Watches"));
     end;
 
-    local procedure OnDrillDownMyWebinarAttendees();
+    local procedure OnDrillDownNavSkillsWatches();
     var
         MyYouTubeVideos: Page "AIR My Youtube Videos";
     begin
