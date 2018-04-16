@@ -4,7 +4,7 @@ Start 'https://businesscentral.dynamics.com/'
 #trial e-mail : 2ilham.fasi@hdprice.co
 #trial password: Password12345$
 
-#2. Create Sandbox Environment - online
+#2. Create/Open Sandbox Environment - online
 Start 'https://businesscentral.dynamics.com/sandbox'
 
 #3. Create Sandbox Environment - locally 
