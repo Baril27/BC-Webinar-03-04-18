@@ -20,6 +20,16 @@ pageextension 50100 "AIR Add simple headl. to BM RC" extends "Headline RC Busine
                         OnDrillDownNavSkillsWatches();
                     end;
                 }
+                field(NavSkillsPredictWatchesText; NavSkillsPredictWatchesText)
+                {
+                    ApplicationArea = Basic, Suite;
+                    trigger OnDrillDown();
+                    var
+                    begin
+                        OnDrillDownNavSkillsPredictWatches();
+                    end;
+                }
+
             }
         }
     }
@@ -28,11 +38,13 @@ pageextension 50100 "AIR Add simple headl. to BM RC" extends "Headline RC Busine
         [InDataSet]
         NavSkillsHeadlinesVisible: Boolean;
         NavSkillsWatchesText: Text;
+        NavSkillsPredictWatchesText : Text;
         GreetingOfTheAudiencePayloadText: Text;
 
     trigger OnAfterGetRecord()
     begin
         HandleNavSkillsWatchesHeadline();
+        HandleNavSkillsPredictWatchesHeadline();
         AIROnSetVisibility(NavSkillsHeadlinesVisible);
     end;
 
@@ -63,6 +75,47 @@ pageextension 50100 "AIR Add simple headl. to BM RC" extends "Headline RC Busine
     begin
         MyYouTubeVideos.Run();
     end;
+
+    local procedure HandleNavSkillsPredictWatchesHeadline()
+    var
+        HeadlineManagement: Codeunit "Headline Management";
+    begin
+        NavSkillsHeadlinesVisible := true;
+        GreetingOfTheAudiencePayloadText := 'You have ' +
+                                            HeadlineManagement.Emphasize(GetNumberOfPlannedYoutubeWebinars) +
+                                            ' planned webinars with ' +
+                                            HeadlineManagement.Emphasize(GetNumberOfPredictedYoutubeWatches) +
+                                            ' predicted watches !'
+                                            ;
+        HeadlineManagement.GetHeadlineText('NAV Skills - Future Webinars', GreetingOfTheAudiencePayloadText, NavSkillsPredictWatchesText);
+        //Message(GreetingOfTheAudienceText);
+    end;
+
+    local procedure GetNumberOfPlannedYoutubeWebinars(): Text
+    var
+        MyPlannedYouTubeVideos: Record "AIR My Planned Youtube Video";
+    begin
+        MyPlannedYouTubeVideos.Refresh();
+        EXIT(Format(MyPlannedYouTubeVideos.Count));
+    end;
+
+    local procedure GetNumberOfPredictedYoutubeWatches(): Text
+    var
+        MyPlannedYouTubeVideos: Record "AIR My Planned Youtube Video";
+    begin
+        MyPlannedYouTubeVideos.Predict();
+        MyPlannedYouTubeVideos.CalcSums("Prediction Number of Watches");
+        EXIT(Format(MyPlannedYouTubeVideos."Prediction Number of Watches"));
+    end;
+
+    local procedure OnDrillDownNavSkillsPredictWatches();
+    var
+        MyPlannedYouTubeVideos: Page "AIR My Planned Youtube Videos";
+    begin
+        MyPlannedYouTubeVideos.Run();
+    end;
+
+
 
     [IntegrationEvent(false, false)]
     local procedure AIROnSetVisibility(var GreetingOfTheAudienceVisible: Boolean)
