@@ -5,13 +5,13 @@ pageextension 50100 "AIR Add simple headl. to BM RC" extends "Headline RC Busine
         addlast(Content)
         {
 
-            group(GreetingOfTheAudience)
+            group(NavSkillsHeadlines)
             {
-                Visible = GreetingOfTheAudienceVisible;
+                Visible = NavSkillsHeadlinesVisible;
                 ShowCaption = false;
                 Editable = false;
 
-                field(GreetingOfTheAudienceText; GreetingOfTheAudienceText)
+                field(NavSkillsWatchesText; NavSkillsWatchesText)
                 {
                     ApplicationArea = Basic, Suite;
                     trigger OnDrillDown();
@@ -26,25 +26,25 @@ pageextension 50100 "AIR Add simple headl. to BM RC" extends "Headline RC Busine
 
     var
         [InDataSet]
-        GreetingOfTheAudienceVisible: Boolean;
-        GreetingOfTheAudienceText: Text;
+        NavSkillsHeadlinesVisible: Boolean;
+        NavSkillsWatchesText: Text;
         GreetingOfTheAudiencePayloadText: Text;
 
     trigger OnAfterGetRecord()
     begin
-        HandleGreetingAudinenceHeadline();
-        AIROnSetVisibility(GreetingOfTheAudienceVisible);
+        HandleNavSkillsWatchesHeadline();
+        AIROnSetVisibility(NavSkillsHeadlinesVisible);
     end;
 
-    local procedure HandleGreetingAudinenceHeadline()
+    local procedure HandleNavSkillsWatchesHeadline()
     var
         HeadlineManagement: Codeunit "Headline Management";
     begin
-        GreetingOfTheAudienceVisible := true;
+        NavSkillsHeadlinesVisible := true;
         GreetingOfTheAudiencePayloadText := 'You have ' +
                                             HeadlineManagement.Emphasize(GetNumberOfYoutubeWatches) +
                                             ' watches in Youtube!';
-        HeadlineManagement.GetHeadlineText('NAV Skills - Webinars', GreetingOfTheAudiencePayloadText, GreetingOfTheAudienceText);
+        HeadlineManagement.GetHeadlineText('NAV Skills - Webinars', GreetingOfTheAudiencePayloadText, NavSkillsWatchesText);
         //Message(GreetingOfTheAudienceText);
     end;
 
