@@ -12,10 +12,12 @@ Start 'https://businesscentral.dynamics.com/sandbox'
 # download CreateBCSandbox.ps1 script
 # change $accept_eula = $true
 # change $containername = 'Your container name' (ex. airapps-sandbox)
-# change $navdockerimage = 'microsoft/bcsandbox:12.0.21229.0-us' (bug)
 # run script
 Start 'http://airapps-sandbox/nav/'
+Docker stop AirApps-Sandbox
+
 
 #Links
 #docker images
+Start 'https://blogs.msdn.microsoft.com/freddyk/2018/04/16/which-docker-image-is-the-right-for-you/'
 Start 'https://store.docker.com/community/images/microsoft/bcsandbox/tags'
