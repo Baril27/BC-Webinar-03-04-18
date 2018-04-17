@@ -59,9 +59,8 @@ pageextension 50100 "AIR Add simple headl. to BM RC" extends "Headline RC Busine
 
     local procedure OnDrillDownNavSkillsWatches();
     var
-        MyYouTubeVideos: Page "AIR My Youtube Videos";
     begin
-        MyYouTubeVideos.Run();
+        Hyperlink('https://www.youtube.com/watch?v=uDFvG64TkEI&list=PLhZ3P-LY7CqnJY3p9AuwSBC6TOgYFPnY3');;
     end;
 
     [IntegrationEvent(false, false)]
