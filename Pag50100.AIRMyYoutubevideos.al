@@ -28,26 +28,32 @@ page 50100 "AIR My Youtube videos"
         field(Category;Category)
         {
           ApplicationArea = All;
+          Visible = false;
         }
         field("Auditory Size";"Auditory Size")
         {
           ApplicationArea = All;
+          Visible = false;
         }
         field(Level;Level)
         {
           ApplicationArea = All;
+          Visible = false;
         }
         field("Hot topic";"Hot topic")
         {
           ApplicationArea = All;
+          Visible = false;
         }
         field("Auditory Type";"Auditory Type")
         {
           ApplicationArea = All;
+          Visible = false;
         }
         field(Season;Season)
         {
           ApplicationArea = All;
+          Visible = false;
         }
       }
     }
