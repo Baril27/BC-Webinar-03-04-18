@@ -16,7 +16,7 @@ codeunit 50101 "AIR Refresh My Planned YT Vid."
 
         // Simple web service call
         HttpClient.DefaultRequestHeaders.Add('User-Agent','Dynamics 365');
-        if not HttpClient.Get('https://getbridgeapp.co/api/webinar170418demo5/youtubevideos',
+        if not HttpClient.Get('https://getbridgeapp.co/api/webinar170418demo5/plannedyoutubevideos',
                               ResponseMessage)
         then
             Error('The call to the web service failed.');
@@ -54,12 +54,14 @@ codeunit 50101 "AIR Refresh My Planned YT Vid."
         MyPlannedYouTubeVideo.init;
         
         MyPlannedYouTubeVideo."webinar name" := COPYSTR(GetJsonToken(JsonObject,'webinar_name').AsValue.AsText, 1, 250);
-        MyPlannedYouTubeVideo."category" := COPYSTR(GetJsonToken(JsonObject,'category').AsValue.AsText, 1, 250);
-        MyPlannedYouTubeVideo."auditory size" := COPYSTR(GetJsonToken(JsonObject,'auditory_size').AsValue.AsText, 1, 250);
-        MyPlannedYouTubeVideo."level" := COPYSTR(GetJsonToken(JsonObject,'level').AsValue.AsText, 1, 250);
-        MyPlannedYouTubeVideo."hot topic" := COPYSTR(GetJsonToken(JsonObject,'hot_topic').AsValue.AsText, 1, 250);
-        MyPlannedYouTubeVideo."auditory type" := COPYSTR(GetJsonToken(JsonObject,'auditory_type').AsValue.AsText, 1, 250);
-        MyPlannedYouTubeVideo."season" := COPYSTR(GetJsonToken(JsonObject,'season').AsValue.AsText, 1, 250);
+        EVALUATE(MyPlannedYouTubeVideo."category",COPYSTR(GetJsonToken(JsonObject,'category').AsValue.AsText, 1, 250));
+        EVALUATE(MyPlannedYouTubeVideo."auditory size",COPYSTR(GetJsonToken(JsonObject,'auditory_size').AsValue.AsText, 1, 250));
+        EVALUATE(MyPlannedYouTubeVideo."level",COPYSTR(GetJsonToken(JsonObject,'level').AsValue.AsText, 1, 250));
+        EVALUATE(MyPlannedYouTubeVideo."hot topic",COPYSTR(GetJsonToken(JsonObject,'hot_topic').AsValue.AsText, 1, 250));
+        EVALUATE(MyPlannedYouTubeVideo."auditory type",COPYSTR(GetJsonToken(JsonObject,'auditory_type').AsValue.AsText, 1, 250));
+        EVALUATE(MyPlannedYouTubeVideo."season",COPYSTR(GetJsonToken(JsonObject,'season').AsValue.AsText, 1, 250));
+        MyPlannedYouTubeVideo."planned date" := COPYSTR(GetJsonToken(JsonObject,'planned_date').AsValue.AsText, 1, 250);
+
         MyPlannedYouTubeVideo.Insert;
     end;
 

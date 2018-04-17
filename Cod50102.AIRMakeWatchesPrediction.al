@@ -20,12 +20,12 @@ codeunit 50102 "AIR Make Watches Prediction"
         AzureMLConnector.AddInputColumnName('Season');
 
         AzureMLConnector.AddInputRow();
-        AzureMLConnector.AddInputValue(MyPlannedYouTubeVideo.Category);
-        AzureMLConnector.AddInputValue(MyPlannedYouTubeVideo."Auditory Size");
-        AzureMLConnector.AddInputValue(MyPlannedYouTubeVideo.Level);
-        AzureMLConnector.AddInputValue(MyPlannedYouTubeVideo."Hot topic");
-        AzureMLConnector.AddInputValue(MyPlannedYouTubeVideo."Auditory Type");
-        AzureMLConnector.AddInputValue(MyPlannedYouTubeVideo.Season);
+        AzureMLConnector.AddInputValue(FORMAT(MyPlannedYouTubeVideo.Category));
+        AzureMLConnector.AddInputValue(FORMAT(MyPlannedYouTubeVideo."Auditory Size"));
+        AzureMLConnector.AddInputValue(FORMAT(MyPlannedYouTubeVideo.Level));
+        AzureMLConnector.AddInputValue(FORMAT(MyPlannedYouTubeVideo."Hot topic"));
+        AzureMLConnector.AddInputValue(FORMAT(MyPlannedYouTubeVideo."Auditory Type"));
+        AzureMLConnector.AddInputValue(FORMAT(MyPlannedYouTubeVideo.Season));
         
         AzureMLConnector.SendToAzureML(false);
 

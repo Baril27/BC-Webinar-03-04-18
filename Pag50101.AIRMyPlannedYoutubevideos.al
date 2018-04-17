@@ -2,7 +2,9 @@ page 50101 "AIR My Planned Youtube videos"
 {
   PageType = List;
   SourceTable = "AIR My Planned Youtube Video";
-  Editable = false;    
+  Editable = true;  
+  InsertAllowed = false;
+  DeleteAllowed = false;  
   UsageCategory = Lists;
   SourceTableView = sorting ("Prediction Number of Watches")  order (descending);
 
@@ -16,11 +18,19 @@ page 50101 "AIR My Planned Youtube videos"
         field("Webinar Name";"Webinar Name")
         {
           ApplicationArea = Basic, Suite;
+          Editable = false;
         }
         field("Prediction Number of Watches";"Prediction Number of Watches")
         {
           ApplicationArea = Basic, Suite;
+          Editable = false;
         }
+        field("Planned date";"Planned date")
+        {
+          ApplicationArea = All;
+          Editable = false;
+        }
+
         field(Category;Category)
         {
           ApplicationArea = All;

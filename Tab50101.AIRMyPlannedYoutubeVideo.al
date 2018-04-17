@@ -12,31 +12,36 @@ table 50101 "AIR My Planned Youtube Video"
         {
 
         }
-
-        field(4; "Category"; Text[30])
+        field(3; "Planned date"; Text[30])
         {
 
         }
 
-        field(5; "Auditory Size"; Text[30])
+        field(4; "Category"; Option)
         {
+            OptionMembers = "C/Side",Docker,"Extensions","PowerShell","Product","Reporting","SCM","Testing","Upgrade" ;
+        }
+
+        field(5; "Auditory Size"; Option)
+        {
+            OptionMembers = narrow,wide;
+        }
+        field(6; Level; Option)
+        {
+            OptionMembers = Advanced,Intermediate;
+        }
+        field(7; "Hot topic"; Option)
+        {
+            OptionMembers = No,Yes;
 
         }
-        field(6; Level; Text[30])
+        field(8; "Auditory Type"; Option)
         {
-
+            OptionMembers = All,Developers,Testers;
         }
-        field(7; "Hot topic"; Text[30])
+        field(9; "Season"; Option)
         {
-
-        }
-        field(8; "Auditory Type"; Text[30])
-        {
-
-        }
-        field(9; "Season"; Text[30])
-        {
-
+            OptionMembers = Winter,Spring,Summer,Autumn;
         }
         field(10; "Prediction Number of Watches"; Integer)
         {
